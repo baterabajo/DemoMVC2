@@ -1,0 +1,65 @@
+@* @model List<DemoMVC2.Models.Producto>   *@
+
+@using DemoMVC2.ViewModel 
+@model ProductoViewModel
+
+
+<h1>Productos</h1>
+
+<div class="row">
+    <form asp-action="Index" accept=" asp-controller=Productos" method="get">
+        <p>
+            Nombre: <input type="text" asp-for="SearchText" placeholder="Buscar producto por nombre">
+            <input class="btn btn-primary" type="submit" value="Buscar">
+        </p>
+
+    </form>
+</div>
+
+
+<p>
+    <a asp-action="Create">Nuevo Producto</a>
+</p>
+
+
+
+<div class="row">
+    <table class="table table-hover"   >
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripcion</th>
+                <th>Precio</th>
+                <th>Categoria</th>
+                <th>Proveedor</th>
+             </tr>
+        </thead>
+            <tbody>
+               @foreach (var item   in Model.Productos)
+               {
+               <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Categoria.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Proveedor.Nombre)</td>
+                    
+                    <td>
+                        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@item.Id">Editar</a>
+                        <a asp-action="Details" class="btn btn-info" asp-route-id="@item.Id">Detalles</a>
+                        <a asp-action="Delete" class="btn btn-danger" onclick="ShowConfirmAcction(event,@item.Id)" asp-route-id="@item.Id">Eliminar</a>
+                    </td>
+               </tr>
+               }
+           
+            </tbody>        
+    </table>
+    
+</div>
+
+@section Scripts
+{
+<script src="~/js/Producto.js"></script>
+}

@@ -1,0 +1,50 @@
+﻿@model DemoMVC2.Models.Producto
+
+<h2>Detalles del Producto: @Model.Nombre</h2>
+
+<div class="row">
+    <dl class="row" >
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model =>Model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Nombre)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Descripcion)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(Model => Model.Precio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Precio)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayName("Categoria")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Categoria.Nombre)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayName("Proveedor")
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(Model => Model.Proveedor.Nombre)
+        </dd>
+
+    </dl>
+
+    <div>
+        <a class="btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+        <a class="btn-outline-success" asp-action="Index">Back to List</a>
+    </div>
+
+</div>

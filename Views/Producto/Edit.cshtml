@@ -1,0 +1,71 @@
+﻿@model DemoMVC2.Models.Producto
+
+<h2>Editar Producto</h2>
+
+<div class="row">
+
+        <form asp-action="Edit" class="col-md-4"   method="post">
+
+            <hidden  asp-for="Id"/>
+
+            <div class="form-group" >
+                <label asp-for="Nombre" class="col-form-label"></label>
+                <input asp-for="Nombre" class="form-control"   />
+                <span asp-validation-for="Nombre"  class="text-danger"></span>
+            </div>
+
+        <div class="form-group">
+            <label asp-for="Descripcion" class="col-form-label"></label>
+            <input asp-for="Descripcion" class="form-control" />
+            <span asp-validation-for="Descripcion" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Precio" class="col-form-label"></label>
+            <input asp-for="Precio" class="form-control" />
+            <span asp-validation-for="Precio" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="CategoriaId" class="control-label"></label>
+            <select asp-for="CategoriaId" class="form-control">
+                <option value="">--Select Categoria--</option>
+                @foreach (var Categoria in ViewBag.Categoria)
+                {
+                    <option value="@Categoria.Id">@Categoria.Nombre</option>
+                }
+            </select>
+            <span asp-validation-for="CategoriaId" class="text-danger"></span>
+        </div>
+
+
+        <div class="form-group">
+            <label asp-for="ProveedorId" class="control-label"></label>
+            <select asp-for="ProveedorId" class="form-control">
+                <option value="">--Select Proveedor--</option>
+                @foreach (var proveedor in ViewBag.proveedor)
+                {
+                    <option value="@proveedor.Id">@proveedor.Nombre</option>
+                }
+            </select>
+            <span asp-validation-for="ProveedorId" class="text-danger"></span>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="submit" value="Guardar" class="btn-primary" />
+            <a asp-action="Index" class="btn-danger">Cancelar</a>
+        </div>
+
+        <div>
+            <a class="btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+            <a class="btn-outline-success" asp-action="Index">Back to List</a>
+        </div>
+      
+        </form>
+
+</div>
+
+
+
+

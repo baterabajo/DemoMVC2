@@ -1,0 +1,32 @@
+
+@model  List<DemoMVC2.Models.Streamer>
+
+
+<h1>streamers </h1>
+
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>Id</tr>
+            <tr>Nombre</tr>
+            <tr>Url</tr>
+     
+        </thead>
+            <tbody>
+                  @foreach (var item   in Model)
+              
+               {
+                    <tr><td>@Html.DisplayFor(modelItem => item.Id)</td></tr>
+                    <tr><td>@Html.DisplayFor(modelItem => item.Nombre)</td></tr>
+                    <tr><td>@Html.DisplayFor(modelItem => item.Url)</td></tr>
+                  
+               }
+           
+            </tbody>
+
+                <th></th>
+            
+        
+    </table>
+    
+</div>
